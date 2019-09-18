@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Kirinfm,fangming312581573@outlook.com"><title>Tensorflow：实战Google深度学习框架 · 方明</title><meta name="description" content="深度学习简介
+TensorFlow 环境搭建
+TensorFlow 入门
+深层神经网络
+MNIST 数字识别问题
+图像识别与卷积神经网络
+图像数据处理
+循环神经网络
+TensorBoard 可视化
+TensorFlow 计算加速
+
+深度学习简介输入-&amp;gt;基础特征-&amp;gt;特殊特征-&amp;gt;权重-"><meta name="keywords" content="Java,PHP,android,Python"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4" style="width:127px;"><div title><a href="http://github.com/Kirinfm">方明(Kirinfm)</a></div><div class="description"><p>I'm not perfect, my code is</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Kirinfm"><i class="fa fa-github"></i></a></li><li><a href="http://gitlab.com/Kirinfm"><i class="fa fa-gitlab"></i></a></li><li><a href="mailto:fangming312581573@outlook.com?subject=Join us&amp;body=Join us!"><i class="fa fa-envelope"></i></a></li></ul><div class="footer"><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><a href="http://github.com/Kirinfm"><img src="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4"></a></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Tensorflow：实战Google深度学习框架</a></h3></div><div class="post-content"><ul>
+<li>深度学习简介</li>
+<li>TensorFlow 环境搭建</li>
+<li>TensorFlow 入门</li>
+<li>深层神经网络</li>
+<li>MNIST 数字识别问题</li>
+<li>图像识别与卷积神经网络</li>
+<li>图像数据处理</li>
+<li>循环神经网络</li>
+<li>TensorBoard 可视化</li>
+<li>TensorFlow 计算加速</li>
+</ul>
+<h1 id="深度学习简介"><a href="#深度学习简介" class="headerlink" title="深度学习简介"></a>深度学习简介</h1><p>输入-&gt;基础特征-&gt;特殊特征-&gt;权重-&gt;预测</p>
+<p>如搜狗输入法中文输入 ten</p>
+<p>ten 为输入，基础特征是<code>中文拼音</code>，特殊特征为<code>读音</code>、<code>中文喜好(经常使用的中文)</code>、<code>拼音截取(te&#39;n/t&#39;en)</code>等作为特殊特征，按照权重进行预测分布。<br><img src="/images/2018-11-05-tensorflow%E5%AE%9E%E6%88%98/img1.png" alt="图片1"></p>
+<blockquote>
+<p>为构思的输入预测，并未阅读搜狗输入法源码，并不确定是输入法真实的实现方式</p>
+</blockquote>
+<h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>Tensor （张量）=》 多维数组</p>
+<p>张量即描述事物的多维数组，二维数组能够描述一条线，三维数组能够描述线以及线的角度，多维数组能够描述各种特征。</p>
+<p>Flow（流）</p>
+<p><img src="/images/2018-11-05-tensorflow%E5%AE%9E%E6%88%98/img2.png" alt="神经网络传递"></p>
+<p><img src="/images/2018-11-05-tensorflow%E5%AE%9E%E6%88%98/img3.png" alt="神经网络传递"></p>
+<h1 id="深层神经网络"><a href="#深层神经网络" class="headerlink" title="深层神经网络"></a>深层神经网络</h1><p>损失函数 &gt;0.5 =&gt; 1 &lt;0.5 =&gt; 0   预测<br>（梯度下降算法<br>反向传播算法）  真实</p>
+<h1 id="MNIST-数字识别问题"><a href="#MNIST-数字识别问题" class="headerlink" title="MNIST 数字识别问题"></a>MNIST 数字识别问题</h1><p>mnist 手写体数字识别数据集<br>包含60000个训练数据及10000个测试数据，可分为10类</p>
+<h1 id="图像识别与卷积神经网络CNN"><a href="#图像识别与卷积神经网络CNN" class="headerlink" title="图像识别与卷积神经网络CNN"></a>图像识别与卷积神经网络CNN</h1><p>图像数据处理</p>
+<p>循环神经网络</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-11-05</span><i class="fa fa-comment-o"></i><a href="/2018/11/05/2018-11-05-tensorflow实战/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/tags/Tensorflow-深度学习/" title="Tensorflow 深度学习">Tensorflow 深度学习 </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2019/06/03/2019-06-03-Selenium2自动化测试实战/" title="Selenium 2 自动化测试实战 基于Python语言">上一篇</a></li></ul></div><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+    id: '2018/11/05',
+    owner: 'Kirinfm',
+    admin: ['Kirinfm'],
+    repo: 'Kirinfm.github.io',
+    oauth: {
+        client_id: '77548fbb5c5dd1cf3a7b',
+        client_secret: 'b5ca9bc9d240034dfe437b0514a567595d6cc6f8',
+    },
+})
+gitment.render('container')</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

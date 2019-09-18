@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Kirinfm,fangming312581573@outlook.com"><title>Selenium 2 自动化测试实战 基于Python语言 · 方明</title><meta name="description" content="自动化测试基础
+测试环境搭建
+Python基础
+WebDriver API
+自动化测试模型
+Selenium IDE
+unittest 单元测试框架
+自动化测试高级应用
+Selenium Grid2
+Python多线程
+自动化测试项目实战
+BDD框架之Lettuce入门
+GitHub托管项目
+持续集"><meta name="keywords" content="Java,PHP,android,Python"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4" style="width:127px;"><div title><a href="http://github.com/Kirinfm">方明(Kirinfm)</a></div><div class="description"><p>I'm not perfect, my code is</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Kirinfm"><i class="fa fa-github"></i></a></li><li><a href="http://gitlab.com/Kirinfm"><i class="fa fa-gitlab"></i></a></li><li><a href="mailto:fangming312581573@outlook.com?subject=Join us&amp;body=Join us!"><i class="fa fa-envelope"></i></a></li></ul><div class="footer"><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><a href="http://github.com/Kirinfm"><img src="https://avatars3.githubusercontent.com/u/40154851?s=400&amp;u=308058ed648bd052833259f4b0ffcdbb260bafc7&amp;v=4"></a></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Selenium 2 自动化测试实战 基于Python语言</a></h3></div><div class="post-content"><ul>
+<li>自动化测试基础</li>
+<li>测试环境搭建</li>
+<li>Python基础</li>
+<li>WebDriver API</li>
+<li>自动化测试模型</li>
+<li>Selenium IDE</li>
+<li>unittest 单元测试框架</li>
+<li>自动化测试高级应用</li>
+<li>Selenium Grid2</li>
+<li>Python多线程</li>
+<li>自动化测试项目实战</li>
+<li>BDD框架之Lettuce入门</li>
+<li>GitHub托管项目</li>
+<li>持续集成Jenkins入门</li>
+</ul>
+<h1 id="WebDriver-API"><a href="#WebDriver-API" class="headerlink" title="WebDriver API"></a>WebDriver API</h1><p><img src="/images/2019-06-03-selenium2%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/By_class.png" alt="By_class"></p>
+<ul>
+<li><p><code>By.ID</code>/<code>By.NAME</code>/<code>By.CLASS_NAME</code> = <code>元素属性</code> </p>
+</li>
+<li><p><strong>文本链接名称</strong> <code>By.LINK_TEXT</code> =&gt; <code>&lt;a href=&quot;https://cloud.propersoft.cn/youtrack/issue/iCMP-2053&quot;&gt;iCMP-2053&lt;/a&gt;   find_elements(self, by=By.LINK_TEXT, value=&quot;iCMP-2053&quot;)</code></p>
+</li>
+<li><p><strong>超长文本链接部分</strong> <code>By.PARTIAL_LINK_TEXT</code> =&gt; <code>&lt;a href=&quot;https://cloud.propersoft.cn/youtrack/issue/iCMP-2053&quot;&gt;youtrack 任务 iCMP-2053&lt;/a&gt;  find_elements(self, by=By.PARTIAL_LINK_TEXT, value=&quot;任务iCMP-2053&quot;)</code></p>
+</li>
+<li><p><code>By.XPATH</code></p>
+<blockquote>
+<p>id name class link_text 会变化的情况下，采用 XPath 定位<br> XPath 是一种在XML文档中定位元素的语言。HTML 可以看作 XML 的一种实现</p>
+</blockquote>
+<p> <strong>绝对路径定位</strong></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=/div/div/div[2]/div/form/div/div/div[3]/div/div[2]/div/div/span/span/input</span><br></pre></td></tr></table></figure>
+
+<p> <strong>元素属性定位</strong></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//input[@id=&apos;username&apos;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>层级与属性定位</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//div[@id=&apos;root&apos;]/div/div/div[2]/div/form/div/div/div[3]/div/div[2]/div/div/span/span/input</span><br></pre></td></tr></table></figure>
+
+<p><strong>逻辑运算符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//input[@id=&apos;username&apos; and @class=&apos;username&apos;]</span><br><span class="line">xpath=//button[contains(.,&apos;登 录&apos;)]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>By.CSS_SELECTOR</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#username</span><br><span class="line">.username</span><br><span class="line">span&gt;input</span><br><span class="line">[name=&apos;username&apos;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>控制浏览器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver.set_window_size(480, 800);</span><br><span class="line">driver.back()//后退</span><br><span class="line">driver.forward()//前进</span><br><span class="line">driver.refresh()//刷新</span><br></pre></td></tr></table></figure>
+
+<p>元素操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element(By.ID, &quot;username&quot;).clear();//清除</span><br><span class="line">driver.find_element(By.ID, &quot;username&quot;).send_keys(&quot;admin&quot;);//输入</span><br><span class="line">driver.find_element(By.CSS_SELECTOR, &quot;.ant-btn&quot;).click();//点击</span><br><span class="line"></span><br><span class="line">driver.find_element(By.ID, &quot;username&quot;).submit();//表单提交</span><br></pre></td></tr></table></figure>
+
+<p>鼠标事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">perform() 执行所有行为</span><br><span class="line">context_click() 右击</span><br><span class="line">double_click() 双击</span><br><span class="line">drag_and_drop() 拖动</span><br><span class="line">move_to_element() 鼠标悬停</span><br></pre></td></tr></table></figure>
+
+<p>键盘事件</p>
+<p>提供了一个 Keys 的类来模拟键盘</p>
+<p><img src="/images/2019-06-03-selenium2%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/Keys_class.png" alt="Keys_class"></p>
+<p>等待</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">显式等待： WebDriverWait(..,..,..,..).until()</span><br><span class="line">隐式等待：implicity_wait()</span><br><span class="line">sleep</span><br></pre></td></tr></table></figure>
+
+<p>frame切换： switch_to.frame(“frame”)//id</p>
+<p>窗口切换：switch_to.window()</p>
+<blockquote>
+<p>还有许多操作的API, 就不一一列举，selenium 类库会满足基本的页面操作</p>
+</blockquote>
+<h1 id="Selenium-IDE-–-FireFox"><a href="#Selenium-IDE-–-FireFox" class="headerlink" title="Selenium IDE – FireFox"></a>Selenium IDE – FireFox</h1><p><img src="/images/2019-06-03-selenium2%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/SeleniumIDE.png" alt="SeleniumIDE"></p>
+<h1 id="Selenium-Grid2"><a href="#Selenium-Grid2" class="headerlink" title="Selenium Grid2"></a>Selenium Grid2</h1><p>Grid 在不同主机上建立主节点(hub) 和分支节点(node)， 可以搭建不同的测试环境，得到不同的测试结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// hub</span><br><span class="line">@echo off</span><br><span class="line">java -jar selenium-server-standalone-3.141.59.jar -role hub -host localhost</span><br><span class="line">pause</span><br><span class="line"></span><br><span class="line">// node</span><br><span class="line">@echo off</span><br><span class="line">java -Dwebdriver.chrome.driver=D://chrome//chromedriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -browser “browserName=chrome,maxinstance=1,platform=WINDOWS”</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>控制台</p>
+<blockquote>
+<p><a href="http://localhost:4444/grid/console" target="_blank" rel="noopener">http://localhost:4444/grid/console</a></p>
+</blockquote>
+<h1 id="自动化测试项目实战"><a href="#自动化测试项目实战" class="headerlink" title="自动化测试项目实战"></a><a href="https://github.com/Kirinfm/selenium2" target="_blank" rel="noopener">自动化测试项目实战</a></h1></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-06-03</span><i class="fa fa-comment-o"></i><a href="/2019/06/03/2019-06-03-Selenium2自动化测试实战/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/tags/Selenium-Selenium2-自动化测试/" title="Selenium Selenium2 自动化测试">Selenium Selenium2 自动化测试 </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2019/06/11/2019-06-11-Selenium IDE 构建自动化测试/" title="Selenium IDE 构建自动化测试">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2018/11/05/2018-11-05-tensorflow实战/" title="Tensorflow：实战Google深度学习框架">下一篇</a></li></ul></div><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+    id: '2019/06/03',
+    owner: 'Kirinfm',
+    admin: ['Kirinfm'],
+    repo: 'Kirinfm.github.io',
+    oauth: {
+        client_id: '77548fbb5c5dd1cf3a7b',
+        client_secret: 'b5ca9bc9d240034dfe437b0514a567595d6cc6f8',
+    },
+})
+gitment.render('container')</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
